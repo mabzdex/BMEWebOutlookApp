@@ -5,11 +5,12 @@
     // Office is ready
     $(document).ready(function() {
       // The document is ready
-      loadItemProps();
+      checkSignature();
     });
   });
 
-  function loadItemProps() {
+  function checkSignature() {
+    alert("checkSignature triggered");
     var item = Office.context.mailbox.item;
     Office.context.mailbox.item.body.setAsync(getTemplate(), { coercionType: Office.CoercionType.Html }, function(
       asyncResult
