@@ -12,7 +12,10 @@
   function checkSignature() {
     alert("checkSignature triggered");
     var item = Office.context.mailbox.item;
-    Office.context.mailbox.item.body.setAsync(getTemplate(), { coercionType: Office.CoercionType.Html }, function(
+    var user_profile = Office.context.mailbox.userProfile;
+    var letterHeadTemplate = getTemplate();
+    letterHeadTemplate = letterHeadTemplate.replace("{Full_Name}", user_profile.displayName);
+    Office.context.mailbox.item.body.setAsync(letterHeadTemplate, { coercionType: Office.CoercionType.Html }, function(
       asyncResult
     ) {
       console.log(asyncResult.status);
